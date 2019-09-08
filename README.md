@@ -71,3 +71,7 @@ $ docker-compose up -d
 ```
 
 Used [mongoose](https://docs.nestjs.com/techniques/mongodb)
+
+About [models](https://mongoosejs.com/docs/models.html) </br>
+About [schemas](https://mongoosejs.com/docs/api/schema.html) </br>
+About [validations](https://mongoosejs.com/docs/validation.html) </br>
