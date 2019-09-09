@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
 
 export interface Article extends Document {
-    readonly name: String,
     readonly title: String,
+    readonly id: String,
     readonly description: String,
     readonly body: String,
     readonly complexity: Number,

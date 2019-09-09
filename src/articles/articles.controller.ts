@@ -11,9 +11,9 @@ export class ArticlesController {
     return this.articlesService.findAll();
   }
 
-  @Get(':id')
-  getById(@Param('id') id: string) {
-    return `Get article by id: ${id}`;
+  @Get(':title')
+  getByTitle(@Param('title') title: string) {
+    return this.articlesService.findByTitle(title);
   }
 
   @Post()
@@ -21,14 +21,13 @@ export class ArticlesController {
     return this.articlesService.create(article);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string) {
-    return `Update article by id: ${id}`;
-
+  @Put(':title')
+  update(@Param('title') title: string, article: CreateArticleDto) {
+    return this.articlesService.update(title, article);
   }
 
-  @Delete(':id')
-  delete(@Param('id') id: string) {
-    return `Delete article by id: ${id}`;
+  @Delete()
+  delete(@Body() article: CreateArticleDto) {
+    return this.articlesService.delete(article);
   }
 }

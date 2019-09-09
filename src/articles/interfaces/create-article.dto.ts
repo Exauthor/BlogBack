@@ -4,13 +4,16 @@ export class CreateArticleDto {
     @IsString()
     readonly title: string;
 
+    @IsString()
+    readonly id: string;
+
     @Length(10, 500)
     @IsString()
     readonly description: string;
 
     @IsString()
     readonly body: string;
-    
+
     @IsInt()
     @Min(1)
     @Max(10)
@@ -18,17 +21,14 @@ export class CreateArticleDto {
 
     @IsString()
     readonly headerImage: string;
-    
+
     @IsString()
     readonly articleImage: string;
-    
+
     readonly themes: string[];
 
     readonly size: number[];
-    
+
     @IsString()
     readonly archive: boolean;
-
-    // @IsDate()
-    // createDate: Date;
 }

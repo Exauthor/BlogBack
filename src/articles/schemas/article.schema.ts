@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 
 export const ArticleSchema = new mongoose.Schema({
-  name: String,
-  title: String,
+  title: { type: String, required: true, unique: true },
+  id: { type: String, required: true, unique: true },
   description: String,
   body: String,
   complexity: Number,
@@ -10,5 +10,5 @@ export const ArticleSchema = new mongoose.Schema({
   articleImage: String,
   themes: Array,
   size: Array,
-  archive: Boolean,
+  archive: { type: Boolean, defaults: true },
 });
