@@ -20,7 +20,7 @@ export class ArticlesService {
     const createdArticle = new this.articleModel(createArticleDto);
     return await createdArticle.save();
   }
-  
+
   async update(title: string, article: CreateArticleDto) {
     return await this.articleModel.updateOne({title: title}, article).exec();
   }
