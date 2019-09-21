@@ -21,8 +21,8 @@ export class ArticlesService {
     return await createdArticle.save();
   }
 
-  async update(title: string, article: CreateArticleDto) {
-    return await this.articleModel.updateOne({title: title}, article).exec();
+  async update(id: string, article: CreateArticleDto) {
+    return await this.articleModel.updateOne({id: id}, article).exec();
   }
 
   async delete(article: CreateArticleDto) {

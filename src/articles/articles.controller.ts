@@ -8,27 +8,34 @@ export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
 
   @Get()
-  getAll(): Promise<Article[]> {
-    return this.articlesService.findAll();
+  async getAll(): Promise<Article[]> {
+    return await this.articlesService.findAll();
   }
 
   @Get(':title')
-  getByTitle(@Param('title') title: string) {
-    return this.articlesService.findByTitle(title);
+  async getByTitle(@Param('title') title: string) {
+    return await this.articlesService.findByTitle(title);
   }
 
   @Post()
-  create(@Body() article: CreateArticleDto) {
-    return this.articlesService.create(article);
+  async create(@Body() article: CreateArticleDto) {
+    const isExist = await this.articlesService.findByTitle(article.id);
+    console.log('create Article', article.title, isExist.length)
+    if (isExist.length) {
+      return await this.articlesService.update(article.id, article);
+    } else {
+      return await this.articlesService.create(article);
+    }
   }
 
   @Put(':title')
-  update(@Param('title') title: string, article: CreateArticleDto) {
-    return this.articlesService.update(title, article);
+  async update(@Param('title') title: string, article: CreateArticleDto) {
+    return await this.articlesService.update(title, article);
   }
 
   @Delete()
-  delete(@Body() article: CreateArticleDto) {
-    return this.articlesService.delete(article);
+  async delete(@Body() article: CreateArticleDto) {
+    console.log(article, 'DELETE')
+    return await this.articlesService.delete(article);
   }
 }
